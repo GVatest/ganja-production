@@ -36,7 +36,7 @@ $(function () {
     // switch theme
     var themeBut = $('#theme_but')
     var link = $('.theme')[0]
-    if (flag == 1) {
+    if (flag == 0) {
         nameOfcurrentfile = 'view'
     }
 
