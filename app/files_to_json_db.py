@@ -3,6 +3,7 @@ import json
 from app import db
 from app.models import File
 from PIL import Image
+from PIL import ImageFile
 import PIL
 
 
