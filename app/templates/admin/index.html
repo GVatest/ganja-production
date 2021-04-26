@@ -1,0 +1,9 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    {% if current_user.is_authenticated %}
+        <p style="font-size: 20px; color: #ccc;">Hello</p>
+    {% else %}
+        <p style="font-size: 20px; color: #ccc;">Login pls)</p>
+    {% endif %}
+{% endblock %}

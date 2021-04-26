@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Albums</title>
+    <link class="theme" rel="stylesheet" href="static/css/albums_white.css" id="white">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/flippin_cards.css') }}"> </head>
+
+<body>
+    {% extends 'layout.html' %}
+    {% block intro %}
+        <div class="page">
+            <div class="box">
+                {% set albumf = albums[0] %}
+                <div class="row">
+                    <div class="col">
+                        <div class="view"><div class="view__link">Click (Hover)</div></div>
+                        <div class="container">
+                            <div class="front" style="background-image: url({{ albumf.preview }})">
+                                <div class="inner">
+                                    <p>{{ albumf.title }}</p> <span>{{ albumf.subtitle }}</span> </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p>{{ albumf.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view"><a href="{{ url_for('album_viewer', album_name=albumf.name)}}" class="view__link">View</a></div>
+                    </div>
+                </div>
+                {% for album in albums[1:] %}
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <div class="front" style="background-image: url( {{ album.preview }} )">
+                                    <div class="inner">
+                                        <p>{{ album.title }}</p> <span>{{ album.subtitle }}</span> </div>
+                                </div>
+                                <div class="back">
+                                    <div class="inner">
+                                        <p>{{ album.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view"><a href="{{ url_for('album_viewer', album_name=album.name)}}" class="view__link">View</a></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
+

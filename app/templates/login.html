@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <link class="theme" rel="stylesheet" href="static/css/login_white.css" id="white">
+</head>
+
+<body>
+    <div class="box">
+        <form class="email" id="email-form" name="email" action="#" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <label class="namer" for="email-form">Login</label>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li style="color: white;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+
+            {{ form.username.label(for='username') }}
+            {{ form.username(id='username') }}
+            {% for error in form.username.errors %}
+            <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.password.label(for='password') }}
+            {{ form.password(id='password') }}
+            {% for error in form.password.errors %}
+            <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.login(class='button', value='Login') }}
+        </form>
+    </div>
+</body>
+
+</html>

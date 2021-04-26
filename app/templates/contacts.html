@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contacts</title>
+    <link class="theme" rel="stylesheet" href="static/css/contacts_white.css" id="white">
+</head>
+
+<body>
+    {% extends 'layout.html' %}
+    {% block intro %}
+        <div class="box">
+            <form class="email" id="email-form" name="email" action="#" method="post" novalidate>
+                {{ fb.hidden_tag() }}
+                <label class="namer" for="email-form">Send your mail</label>
+
+                {{ fb.name.label(for='name') }}
+                {{ fb.name(id='name') }}
+                {% for error in fb.name.errors %}
+                <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+                {% endfor %}
+
+                {{ fb.surname.label(for='surname') }}
+                {{ fb.surname(id='surname') }}
+                {% for error in fb.surname.errors %}
+                <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+                {% endfor %}
+
+                {{ fb.email.label(for='email') }}
+                {{ fb.email(id='email') }}
+                {% for error in fb.email.errors %}
+                <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+                {% endfor %}
+
+                {{ fb.message.label(for='message') }}
+                {{ fb.message(id='message') }}
+                {% for error in fb.message.errors %}
+                <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+
+                {{ fb.send(class='button', value='Send') }}
+            </form>
+            <div class="delimiter"></div>
+            <form class="review" id="review-form" name="email" action="#" method="post" novalidate>
+                {{ rv.hidden_tag() }}
+                <label class="namer" for="email-form">Leave your review</label>
+
+                {{ rv.rname.label(for='name') }}
+                {{ rv.rname(id='name') }}
+                {% for error in rv.rname.errors %}
+                <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+                {% endfor %}
+
+                {{ rv.remail.label(for='email') }}
+                {{ rv.remail(id='email') }}
+                {% for error in rv.remail.errors %}
+                <div style="color: red; margin-top: -45px; margin-bottom: 50px;">{{ error }}</div>
+                {% endfor %}
+
+                {{ rv.review.label(for='review') }}
+                {{ rv.review(id='review') }}
+                {% for error in rv.review.errors %}
+                <div style="color: red;">{{ error }}</div>
+                {% endfor %}
+
+                {{ rv.leave(class='button', value='Leave') }}
+            </form>
+        </div>
+    {% endblock %}
+</body>
+
+</html>

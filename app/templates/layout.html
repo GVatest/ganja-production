@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    {% block intro %}{% endblock %}
+
+    <!-- burger -->
+        <div class="wrapper-menu">
+            <div class="line-menu half start"></div>
+            <div class="line-menu"></div>
+            <div class="line-menu half end"></div>
+        </div>
+        <div class="burger-circle"></div>
+
+
+
+    <!-- Logo -->
+        <a href="#" target="blank"><div class="logo">
+
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="">
+
+        </div></a>
+
+
+
+    <!-- nav -->
+        <div class="nav">
+            <a href="{{ url_for('index') }}"><div class="nav-link" id="home">Home</div></a>
+            <a href="{{ url_for('about') }}"><div class="nav-link" id="about">About me</div></a>
+            <a href="{{ url_for('albums') }}"><div class="nav-link" id="albums">Albums</div></a>
+            <a href="{{ url_for('blog') }}"><div class="nav-link" id="posts">Posts</div></a>
+            <a href="{{ url_for('contacts') }}"><div class="nav-link" id="contacts">Contacts</div></a>
+            <div class="nav-link" id="theme_but">Theme</div>
+        </div>
+
+    {% block content_scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<title>Posts</title>
+    <link class="theme" rel="stylesheet" href="static/css/posts_white.css" id="white">
+</head>
+
+<body>
+    {% extends 'layout.html' %}
+    {% block intro %}
+	<div class="box">
+
+        {% for post in posts['posts'] %}
+            <div class="row">
+                <div class="row-img">
+                    <img src="{{ post.photo_path }}">
+                </div>
+                <div class="content">
+                    <div class="content__text">{{ post.text }}</div>
+                </div>
+            </div>
+        {% endfor %}
+
+	</div>
+    {% endblock %}
+</body>
+</html>

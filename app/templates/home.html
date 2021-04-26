@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+    <title>HomePage</title>
+    <link class="theme" rel="stylesheet" href="static/css/home_white.css" id="white">
+</head>
+
+<body>
+    {% extends "layout.html" %}
+    {% block intro %}
+        <div class="box">
+
+            <div class="intro-avatar">
+                <img class="intro-avatar__img" src="{{ url_for('static', filename='images/avatar.jpg') }}" alt="">
+            </div>
+
+            <div class="intro__icons">
+                        <a class="ico" href="#" target="blank"><i class="fab fa-instagram"></i></a>
+
+                        <a class="ico" href="#" target="blank"><i class="fab fa-facebook-f"></i></a>
+
+                        <a class="ico" href="#" target="blank"><i class="fab fa-twitter"></i></a>
+
+                        <a class="ico" href="#" target="blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+            <div class="intro-content">
+                        <div class="intro__title">Media Maker</div>
+
+                        <div class="intro__subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    </div>
+
+        </div>
+    {% endblock %}
+
+
+    {% block content_scripts %}
+    <!-- widgets -->
+        <div class="widget photo-widget"><div class="widget-icon"><a href="#"><i class="fas fa-camera"></i></a></div></div>
+        <div class="widget video-widget"><div class="widget-icon"><a href="#"><i class="fas fa-play"></i></a></div></div>
+
+    <!-- galaries -->
+        <div class="galary galary-photo">
+            <div class="page-galary">
+                <div class="galary-row">
+                    {% for i in range(photos|length // 4 + 1) %}
+                        {% if i != 0: %}
+                            <div class="galary-column">
+                                {% for photo in photos[4 * i - 4: 4 * i] %}
+                                    <div class="galary-img">
+                                        <img src="{{ photo.file_path }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                 </div>
+            </div>
+        </div>
+        <div class="galary galary-video">
+            {% for video in videos %}
+                <div class="galary-video-item">
+                    <iframe class="youtube_video"
+                        width="100%"
+                        height="100%"
+                        src="{{ video.name }}"
+                        srcdoc="<style>*{padding:0;margin:0;overflow:hidden}
+                        img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}
+                        img{display:block;}
+                        span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+                        </style>
+                        <a href={{ video.name }}?autoplay=0>
+                        <img src={{video.file_path}} alt='Demo video'>
+                        <span>▶</span>
+                        </a>"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        title="Demo video">
+                    </iframe>
+                </div>
+            {% endfor %}
+        </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/widgets.js') }}"></script>
+    {% endblock %}
+
+</body>
+
+
+
+</html>

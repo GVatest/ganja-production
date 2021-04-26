@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>View_album</title>
+    <link class="theme" rel="stylesheet" href="static/css/view_white.css" id="white">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/preloader.css') }}">
+</head>
+
+<body>
+    {% extends "layout.html" %}
+    {% block intro %}
+    <div class="preloader">
+        <div class="loader">
+            <div class="ball one"><div class="inner"></div></div>
+            <div class="ball two"><div class="inner"></div></div>
+            <div class="ball three"><div class="inner"></div></div>
+            <div class="ball four"><div class="inner"></div></div>
+            <div class="ball five"><div class="inner"></div></div>
+            <div class="ball six"><div class="inner"></div></div>
+            <div class="ball center"><div class="inner"></div></div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="page-galary">
+            <div class="galary-row">
+                {% if not photos %}
+                    <h1 style="display: inline-block; margin: 0 auto;">Album not found</h1>
+                {% endif %}
+                {% for i in range(photos|length // 4 + 1) %}
+                    {% if i != 0: %}
+                        <div class="galary-column">
+                            {% for photo in photos[4 * i - 4: 4 * i] %}
+                                <div class="galary-img">
+                                    <img src="{{ photo.file_path }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+    {% block content_scripts %}
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/preloader.js') }}"></script>
+    {% endblock %}
+
+</body>
+
+</html>

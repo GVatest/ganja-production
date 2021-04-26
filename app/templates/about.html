@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About me</title>
+    <link class="theme" rel="stylesheet" href="static/css/about_white.css" id="white">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slider.css') }}">
+</head>
+
+<body>
+    {% extends "layout.html" %}
+    {% block intro %}
+    <div class="box">
+        <div class="slider">
+            {% for review in reviews['reviews'] %}
+                <div class="slide">
+                    <div class="slide-img">
+                        {% if not review.photo %}
+                            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="">
+                        {% endif %}
+                        <img src="{{ review.photo }}" alt="">
+                    </div>
+                    <div class="slide__title">{{ review.name }} {{ review.surname }}</div>
+                    <div class="slide__text">{{ review.review }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="content">Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Quia, eligendi laboriosam nulla ipsam odio labore recusandae eaque reprehenderit enim, optio praesentium cumque accusamus aperiam esse aliquid quod illo aliquam nesciunt tempore. Magnam excepturi ullam officiis voluptate unde corrupti consequuntur? Itaque temporibus alias molestias rem harum, consectetur laboriosam! Illum, sed, repellendus.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id odio dolores atque omnis, dolorum totam nostrum tempora saepe rem quia voluptates aspernatur quod cumque, rerum, necessitatibus beatae, enim. Exercitationem, magni cupiditate fuga? Doloribus debitis obcaecati facilis, rerum vero tempora expedita magni eos, sapiente nobis totam molestias? Qui fugiat similique non labore. Totam, suscipit provident facilis, sunt reprehenderit cum rerum maxime architecto reiciendis vel, sapiente eaque cupiditate nostrum, tempore praesentium aut mollitia nam est odit earum nisi quam dicta eligendi iste. Amet, beatae. Hic deleniti enim non eligendi accusantium perspiciatis numquam dolore magni maxime, minima consequatur id. Pariatur illum sunt quisquam.</div>
+        <div class="social">
+            <div class="intro__icons">
+                    <a class="ico" href="#" target="blank"><i class="fab fa-instagram"></i></a>
+                    <a class="ico" href="#" target="blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="ico" href="#" target="blank"><i class="fab fa-twitter"></i></a>
+                    <a class="ico" href="#" target="blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block content_scripts %}
+        <!-- Scripts -->
+        <script src="{{ url_for('static', filename='js/slick.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+    {% endblock %}
+</body>
+
+</html>
