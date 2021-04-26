@@ -36,7 +36,7 @@ def albums():
     return render_template('albums.html', albums=albums)
 
 
-@app.route('/<album_name>/view')
+@app.route('/<album_name>')
 def album_viewer(album_name):
     photos = File.query.filter(File.name.like(f'%{album_name}%')).all()
     return render_template('view.html', photos=photos)
