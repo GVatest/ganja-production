@@ -4,12 +4,14 @@ $(function () {
     // location
     var loc = $(location).attr('href').split('/'),
         nameOfcurrentfile = loc[loc.length - 1],
-        navLink = $('.nav-link')
+        navLink = $('.nav-link'),
+        flag = 0
 
     for (var index = 0; index < navLink.length; index++) {
         $(navLink[index]).removeClass('active')
         if ($(navLink[index]).attr('id') == nameOfcurrentfile) {
             $(navLink[index]).addClass('active')
+            flag = 1
         }
     }
 
@@ -34,6 +36,9 @@ $(function () {
     // switch theme
     var themeBut = $('#theme_but')
     var link = $('.theme')[0]
+    if (flag == 1) {
+        nameOfcurrentfile = 'view'
+    }
 
     function chosenTheme() {
       if(localStorage.getItem('theme') === 'black') {
