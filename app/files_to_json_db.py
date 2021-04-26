@@ -60,9 +60,6 @@ def save_squeeze_files(dirpath):
         except PIL.UnidentifiedImageError:
             db.session.rollback()
             save_squeeze_files(dirpath)
-        except OSError:
-            db.session.rollback()
-            save_squeeze_files(dirpath)
         except RecursionError:
             pass  # log
 
