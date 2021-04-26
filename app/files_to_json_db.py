@@ -7,6 +7,7 @@ import PIL
 
 
 def save_squeeze_files(dirpath):
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
     current_data = {}
     current_files = []
     with open('app/' + dirpath.split('/')[1] + '/' + 'files.json') as f:
