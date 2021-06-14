@@ -4,7 +4,7 @@ $(function () {
     // location
     var loc = $(location).attr('href').split('/'),
         nameOfcurrentfile = 'view',
-        navLink = $('.nav-link'),
+        navLink = $('.nav-link')
 
     for (var index = 0; index < navLink.length; index++) {
         $(navLink[index]).removeClass('active')
